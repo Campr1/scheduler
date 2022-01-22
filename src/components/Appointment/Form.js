@@ -6,7 +6,6 @@ export default function Form(props) {
   
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-  // const [value, setValue] = useState(null);
   const onChange = function (id){
     setInterviewer(id);
   }

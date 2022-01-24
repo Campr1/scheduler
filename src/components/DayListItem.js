@@ -3,8 +3,7 @@ import classNames from "classnames";
 import "components/DayListItem.scss";
 
 export default function DayListItem(props) {
-  const dayClass = classNames("li", {
-    "day-list__item": props.name,
+  const dayClass = classNames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0
   });
@@ -14,8 +13,8 @@ export default function DayListItem(props) {
    return "no spots remaining"
   }else if (props.spots === 1){
     return "1 spot remaining"
-   }else if (props.spots === 2){
-    return "2 spots remaining"
+   }else {
+    return `${props.spots} spots remaining`
    }
 }
   return ( 

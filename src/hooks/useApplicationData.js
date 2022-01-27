@@ -15,13 +15,13 @@ export default function useApplicationData() {
       axios.get('/api/appointments'),
       axios.get('/api/interviewers')
     ]).then((all) => {
-      setState({ days: all[0].data, appointments: all[1].data, interviewers: all[2].data });
+      setState({...state, days: all[0].data, appointments: all[1].data, interviewers: all[2].data });
     });
   }, []);
 
   const setDay = day => setState({ ...state, day });
   // const setDays = days => setState({ ...state, days });
-
+  
   //iterate the days appt id
   // const appointment = appointments[id];
   const dayObj = state.days.find(day => day.name === state.day)

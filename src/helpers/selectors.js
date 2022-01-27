@@ -14,3 +14,17 @@ if(!interview){
 }
 return {interviewer: state.interviewers[interview.interviewer], student: interview.student};
 }
+
+export function getInterviewersForDay(state, day) {
+  const result = [];
+  const dayMatch = state.days.find(dayName => dayName.name === day);
+  if(!dayMatch){
+    return result;
+  }
+  for (const interviewer of dayMatch.interviewers) {
+    if(state.interviewers[interviewer]){
+      result.push(state.interviewers[interviewer])
+    }
+  }
+  return result;
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
+
 export default function Form(props) {
   
   const [student, setStudent] = useState(props.student || "");
@@ -16,6 +17,9 @@ export default function Form(props) {
   const cancel = function() {
     reset();
     props.onCancel();
+  }
+  const onSave = function() {
+    props.onSave(student, interviewer)
   }
 
   return(
@@ -32,7 +36,7 @@ export default function Form(props) {
       />
     </form>
     <InterviewerList
-        interviewer={interviewer}
+        // interviewer={interviewer}
         interviewers={props.interviewers}
         selected={props.selected}
         onChange={onChange}
@@ -42,7 +46,7 @@ export default function Form(props) {
   <section className="appointment__card-right">
     <section className="appointment__actions">
       <Button danger onClick={cancel}>Cancel</Button>
-      <Button confirm onClick={props.onSave}>Save</Button>
+      <Button confirm onClick={onSave}>Save</Button>
     </section>
   </section>
 </main>

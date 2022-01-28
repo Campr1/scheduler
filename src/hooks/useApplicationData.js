@@ -20,21 +20,8 @@ export default function useApplicationData() {
   }, []);
 
   const setDay = day => setState({ ...state, day });
-  // const setDays = days => setState({ ...state, days });
-  
-  //iterate the days appt id
-  // const appointment = appointments[id];
+
   const dayObj = state.days.find(day => day.name === state.day)
-  
-  // const getSpotsForDay = function (day, appointment){
-  //   let spots = 0;
-  //   for(const id of dayObj.appointments){
-  //     if(!appointment.interview){
-  //       spots++;
-  //     }
-  //   }
-  //   return spots;
-  // }
 
   const getSpotsForDay = function (state){
     let spots = 0;
@@ -52,7 +39,6 @@ export default function useApplicationData() {
     const newDay = {...dayObj, spots}
     console.log("spots", spots)
     
-  
     const newDays = state.days.map(day => {
       if(day.id === newDay.id) {
         return newDay;
@@ -60,8 +46,6 @@ export default function useApplicationData() {
         return day;
       }
     })
-    
-
     return newDays;
   }
 
@@ -81,11 +65,6 @@ export default function useApplicationData() {
       setState({ ...state, appointments, days: updatedDay});
 
     })
-
-    // if(state.appointments[id]) {
-    //   setState({...state, appointments})
-    // }
-    // return null;
   };
 
   function bookInterview(id, interview) {

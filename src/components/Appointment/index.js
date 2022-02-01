@@ -10,6 +10,7 @@ import Confirm from "./Confirm";
 import Error from "./Error";
 
 const EMPTY = "EMPTY";
+const FORM = "FORM";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 const STATUS = "STATUS";
@@ -55,13 +56,59 @@ export default function Appointment(props) {
             onDelete={() => transition(CONFIRM)}
           />
         )}
-        {mode === CREATE && <Form onSave={save} onCancel={back} interviewers={props.interviewers} />}
-        {mode === EDIT && <Form onSave={save} onCancel={back} student={props.interview.student} interviewers={props.interviewers} interviewer={props.interview.interviewer.id} />}
-        {mode === STATUS && <Status status={props.status} message={props.message} />}
-        {mode === STATUS_DELETE && <Status status={props.status} message={"Deleting"} />}
-        {mode === ERROR_SAVE && <Error onClose={back} message={"Could not save appointment"} />}
-        {mode === ERROR_DELETE && <Error onClose={back} message={"Could not cancel appointment"} />}
-        {mode === CONFIRM && <Confirm onConfirm={onConfirm} message={"Are You Sure You Want To Cancel This Appointment?"} onCancel={back} />}
+        {mode === CREATE && 
+          <Form 
+          onSave={save} 
+          onCancel={back} 
+          interviewers={props.interviewers} 
+          />
+        }
+
+        {mode === EDIT && 
+          <Form 
+          onSave={save} 
+          onCancel={back} 
+          student={props.interview.student} 
+          interviewers={props.interviewers} 
+          interviewer={props.interview.interviewer.id} 
+          />
+        }
+
+        {mode === STATUS && 
+          <Status 
+          status={props.status} 
+          message={props.message} 
+          />
+        }
+
+        {mode === STATUS_DELETE && 
+          <Status 
+          status={props.status} 
+          message={"Deleting"} 
+          />
+        }
+
+        {mode === ERROR_SAVE && 
+          <Error 
+          onClose={() => transition(FORM)} 
+          message={"Could not save appointment"} 
+          />
+        }
+
+        {mode === ERROR_DELETE && 
+          <Error 
+          onClose={back} 
+          message={"Could not cancel appointment"} 
+          />
+        }
+
+        {mode === CONFIRM && 
+          <Confirm 
+          onConfirm={onConfirm} 
+          message={"Are You Sure You Want To Cancel This Appointment?"} 
+          onCancel={back} 
+          />
+        }
       </article>
     </>
   );

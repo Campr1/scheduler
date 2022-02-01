@@ -17,7 +17,7 @@ export default function useApplicationData() {
     ]).then((all) => {
       setState({ ...state, days: all[0].data, appointments: all[1].data, interviewers: all[2].data });
     });
-  }, []);
+  }, [state]);
 
   const setDay = day => setState({ ...state, day });
   const dayObj = state.days.find(day => day.name === state.day)

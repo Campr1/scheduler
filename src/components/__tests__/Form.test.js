@@ -46,7 +46,7 @@ describe("Form", () => {
   
   it("can successfully save after trying to submit an empty student name", () => {
     const onSave = jest.fn();
-    const { getByAltText, getByText, getByPlaceholderText, queryByText } = render(
+    const { getByText, getByPlaceholderText, queryByText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
     );
   
@@ -62,11 +62,7 @@ describe("Form", () => {
     fireEvent.click(getByText("Save"));
   
     expect(queryByText(/student name cannot be blank/i)).toBeNull();
-  
-    fireEvent.click(getByAltText("Sylvia Palmer"));
-
       
-
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", null);
   });

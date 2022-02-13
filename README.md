@@ -9,6 +9,9 @@ Install dependencies with `npm install`.
 ```sh
 npm start
 ```
+## Run With The Api Server
+
+https://github.com/Campr1/scheduler-api
 
 ## Running Jest Test Framework
 

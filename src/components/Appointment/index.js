@@ -90,7 +90,7 @@ export default function Appointment(props) {
 
         {mode === ERROR_SAVE && 
           <Error 
-          onClose={() => transition(FORM)} 
+          onClose={back} 
           message={"Could not save appointment"} 
           />
         }
